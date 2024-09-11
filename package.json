@@ -1,0 +1,28 @@
+{
+	"name": "@hintergrund/auth",
+	"version": "0.0.1",
+	"description": "Auth utilities for cloudflare workers/pages",
+	"main": "./src/index.js",
+	"module": "./src/index.js",
+	"exports": {
+		".": "./src/index.js"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [
+		"auth",
+		"cloudflare",
+		"workers",
+		"pages"
+	],
+	"author": "Max Elia Schweigkofler",
+	"license": "MIT",
+	"devDependencies": {
+		"eslint": "^9.9.1",
+		"eslint-config-prettier": "^9.1.0",
+		"prettier": "^3.3.3",
+		"publint": "^0.2.10",
+		"typescript": "^5.5.4"
+	}
+}
