@@ -3,7 +3,11 @@
 	"version": "0.0.1",
 	"description": "Auth utilities for cloudflare workers/pages",
 	"main": "./src/index.js",
+	"type": "module",
 	"module": "./src/index.js",
+	"bin": {
+		"add": "./src/cli.js"
+	},
 	"exports": {
 		".": "./src/index.js"
 	},
@@ -24,5 +28,9 @@
 		"prettier": "^3.3.3",
 		"publint": "^0.2.10",
 		"typescript": "^5.5.4"
+	},
+	"dependencies": {
+		"@clack/prompts": "^0.7.0",
+		"kleur": "^4.1.5"
 	}
 }

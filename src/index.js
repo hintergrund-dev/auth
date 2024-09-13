@@ -1,8 +1,8 @@
 import { passwordLogin, passwordLogout, passwordMiddleware } from './password-auth';
-import { verifyPw, hashPw, generateRandomSecret } from './crypto';
-import { readRequestBody, readCookie } from './utils';
-import { sign, verify } from './jwt';
-import { getComponent } from './template';
+import { verifyPw, hashPw, generateRandomSecret } from './utils/crypto';
+import { readRequestBody, readCookie } from './utils/request';
+import { sign, verify } from './utils/jwt';
+import { getComponent } from './utils/template';
 
 export {
 	passwordLogin,
