@@ -1,16 +1,16 @@
 {
 	"name": "@hintergrund/auth",
-	"version": "0.0.1",
+	"version": "0.0.2-next.1",
 	"description": "Auth utilities for cloudflare workers/pages",
-	"main": "./src/index.js",
 	"type": "module",
 	"module": "./src/index.js",
-	"bin": {
-		"add": "./src/cli.js"
-	},
+	"main": "./src/index.js",
 	"exports": {
 		".": "./src/index.js"
 	},
+	"files": [
+		"src"
+	],
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},

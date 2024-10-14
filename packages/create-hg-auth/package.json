@@ -1,0 +1,22 @@
+{
+	"name": "create-hg-auth",
+	"version": "0.0.1-next.0",
+	"description": "A CLI for adding authentication to your hintergrund project",
+	"author": "Hintergrund Development",
+	"license": "MIT",
+	"bin": "./bin.js",
+	"main": "./index.js",
+	"dependencies": {
+		"@clack/prompts": "^0.7.0",
+		"kleur": "^4.1.5"
+	},
+	"devDependencies": {
+		"typescript": "^5.3.3"
+	},
+	"files": [
+		"index.js",
+		"bin.js",
+		"utils.js"
+	],
+	"type": "module"
+}
