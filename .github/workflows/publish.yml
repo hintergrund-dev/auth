@@ -5,26 +5,23 @@ on:
     branches:
       - main
 
-env:
-  AURI_GITHUB_TOKEN: ${{secrets.AURI_GITHUB_TOKEN}}
-  NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
-
 jobs:
   publish-package:
     name: Publish package with Auri
     runs-on: ubuntu-latest
     steps:
-      - name: Setup actions
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
         with:
           ref: ${{ github.ref }}
-      - name: Setup Node
-        uses: actions/setup-node@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: 20
           registry-url: 'https://registry.npmjs.org/'
           cache: 'npm'
-      - name: Prepare release
-        run: npm run auri prepare ${{ github.ref_name }}
-      - name: Publish package
-        run: npm run auri publish ${{ github.ref_name }}
+      - run: npm version patch
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+      - run: git push
+        env:
+          github-token: ${{ secrets.AURI_GITHUB_TOKEN }}
