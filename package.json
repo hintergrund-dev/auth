@@ -1,7 +1,7 @@
 {
 	"name": "@hintergrund/auth",
-	"version": "0.0.2-next.1",
-	"description": "Auth utilities for cloudflare workers/pages",
+	"version": "0.0.1",
+	"description": "Edge authentication for cloudflare workers/pages",
 	"type": "module",
 	"module": "./src/index.js",
 	"main": "./src/index.js",
@@ -11,9 +11,6 @@
 	"files": [
 		"src"
 	],
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
 	"keywords": [
 		"auth",
 		"cloudflare",

@@ -1,6 +1,3 @@
---- # Auth utilities for cloudflare workers/pages 
----
-
 # 🔐 @hintergrund/auth
 
 ## Add authentication to your site with a single command
