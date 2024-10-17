@@ -1,4 +1,5 @@
-import { login } from './login.js';
+import { code } from './code.js';
+
 export function getComponent(element, params = '') {
 	let template = `
 <!doctype html>
@@ -13,7 +14,7 @@ export function getComponent(element, params = '') {
     <body>
         <hg-${element} ${params}></hg-${element}>
         <script type="module">
-        ${login}
+        ${code}
         </script>
     </body>
   </html>

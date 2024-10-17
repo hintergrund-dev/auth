@@ -1,6 +1,9 @@
 # .github/workflows/publish.yaml
-name: "Publish package"
-on: [push]
+name: 'Publish package'
+on:
+  push:
+    branches:
+      - main
 
 env:
   AURI_GITHUB_TOKEN: ${{secrets.AURI_GITHUB_TOKEN}}
@@ -19,8 +22,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 20
-          registry-url: "https://registry.npmjs.org/"
-          cache: "npm"
+          registry-url: 'https://registry.npmjs.org/'
+          cache: 'npm'
       - name: Prepare release
         run: npm run auri prepare ${{ github.ref_name }}
       - name: Publish package
