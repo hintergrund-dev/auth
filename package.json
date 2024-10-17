@@ -1,6 +1,6 @@
 {
 	"name": "@hintergrund/auth",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Edge authentication for cloudflare workers/pages",
 	"type": "module",
 	"module": "./src/index.js",
@@ -20,6 +20,7 @@
 	"author": "Max Elia Schweigkofler",
 	"license": "MIT",
 	"devDependencies": {
+		"auri": "^2.0.0",
 		"eslint": "^9.9.1",
 		"eslint-config-prettier": "^9.1.0",
 		"prettier": "^3.3.3",
