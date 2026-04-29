@@ -1,0 +1,56 @@
+{
+	"name": "@hintergrund/auth",
+	"version": "0.1.2",
+	"description": "Lightweight authentication library for Cloudflare Workers with password hashing, JWT tokens, and cookie-based sessions",
+	"type": "module",
+	"main": "./dist/hintergrund-auth.umd.cjs",
+	"module": "./dist/hintergrund-auth.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/hintergrund-auth.js",
+			"require": "./dist/hintergrund-auth.umd.cjs"
+		}
+	},
+	"files": [
+		"dist",
+		"README.md",
+		"LICENSE"
+	],
+	"scripts": {
+		"build": "vite build",
+		"prepublishOnly": "npm run build"
+	},
+	"keywords": [
+		"cloudflare",
+		"workers",
+		"authentication",
+		"jwt",
+		"password",
+		"hashing",
+		"auth",
+		"session",
+		"cookie",
+		"middleware"
+	],
+	"author": "hintergrund.dev",
+	"license": "MIT",
+	"homepage": "https://github.com/hintergrund/auth#readme",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/hintergrund/auth.git"
+	},
+	"bugs": {
+		"url": "https://github.com/hintergrund/auth/issues"
+	},
+	"devDependencies": {
+		"@types/node": "^22.10.2",
+		"typescript": "^5.7.2",
+		"vite": "^6.0.5",
+		"vite-plugin-dts": "^4.3.0"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}

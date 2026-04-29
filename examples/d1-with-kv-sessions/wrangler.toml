@@ -1,0 +1,21 @@
+name = "d1-with-kv-sessions-example"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+
+[vars]
+# In production: wrangler secret put AUTH_SECRET
+AUTH_SECRET = "dev-secret-change-in-production"
+
+# D1 Database for users
+# Create with: wrangler d1 create auth-db
+[[d1_databases]]
+binding = "DB"
+database_name = "auth-db"
+database_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+
+# KV for sessions (faster than D1 for session lookups)
+# Create with: wrangler kv:namespace create SESSIONS
+[[kv_namespaces]]
+binding = "SESSIONS"
+id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+preview_id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"

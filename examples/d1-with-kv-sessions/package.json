@@ -1,0 +1,18 @@
+{
+	"name": "d1-with-kv-sessions-example",
+	"private": true,
+	"scripts": {
+		"dev": "wrangler dev",
+		"deploy": "wrangler deploy",
+		"db:migrate": "wrangler d1 execute AUTH_DB --local --file=schema.sql",
+		"db:migrate:prod": "wrangler d1 execute AUTH_DB --file=schema.sql"
+	},
+	"dependencies": {
+		"@hintergrund/auth": "file:../.."
+	},
+	"devDependencies": {
+		"@cloudflare/workers-types": "^4.20241218.0",
+		"typescript": "^5.7.2",
+		"wrangler": "^3.99.0"
+	}
+}

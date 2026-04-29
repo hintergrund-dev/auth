@@ -1,0 +1,14 @@
+name = "d1-only-example"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+
+[vars]
+# In production: wrangler secret put AUTH_SECRET
+AUTH_SECRET = "dev-secret-change-in-production"
+
+# D1 Database for users and sessions
+# Create with: wrangler d1 create auth-db
+[[d1_databases]]
+binding = "DB"
+database_name = "auth-db"
+database_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"

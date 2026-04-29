@@ -1,0 +1,21 @@
+name = "kv-only-example"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+
+[vars]
+# In production: wrangler secret put AUTH_SECRET
+AUTH_SECRET = "dev-secret-change-in-production"
+
+# KV for users storage
+# Create with: wrangler kv:namespace create USERS
+[[kv_namespaces]]
+binding = "USERS"
+id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+preview_id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+# KV for sessions storage
+# Create with: wrangler kv:namespace create SESSIONS
+[[kv_namespaces]]
+binding = "SESSIONS"
+id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+preview_id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
