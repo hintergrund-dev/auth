@@ -12,6 +12,7 @@ import type { HashOptions } from './types';
 const SALT_LENGTH = 16;
 const HASH_LENGTH = 32;
 const DEFAULT_ITERATIONS = 50000;
+const textEncoder = new TextEncoder();
 
 // =============================================================================
 // Public API
@@ -26,6 +27,11 @@ const DEFAULT_ITERATIONS = 50000;
 export function generateRandomSecret(length = 32): string {
 	const bytes = crypto.getRandomValues(new Uint8Array(length));
 	return bytesToBase64(bytes);
+}
+
+export async function randomToken(prefix: string, bytes = 32): Promise<string> {
+	const random = crypto.getRandomValues(new Uint8Array(bytes));
+	return `${prefix}_${bytesToBase64Url(random)}`;
 }
 
 /**
@@ -97,6 +103,36 @@ export async function verifyPassword(
 	} catch {
 		return false;
 	}
+}
+
+export async function sha256Hex(value: string | Uint8Array): Promise<string> {
+	const input = typeof value === 'string' ? textEncoder.encode(value).buffer : toArrayBuffer(value);
+	return bytesToHex(await crypto.subtle.digest('SHA-256', input));
+}
+
+export async function hmacSha256(
+	key: ArrayBuffer | Uint8Array | string,
+	value: string
+): Promise<Uint8Array> {
+	const rawKey = typeof key === 'string'
+		? textEncoder.encode(key).buffer
+		: key instanceof Uint8Array
+			? toArrayBuffer(key)
+			: key;
+	const cryptoKey = await crypto.subtle.importKey(
+		'raw',
+		rawKey,
+		{ name: 'HMAC', hash: 'SHA-256' },
+		false,
+		['sign']
+	);
+	return new Uint8Array(
+		await crypto.subtle.sign('HMAC', cryptoKey, textEncoder.encode(value))
+	);
+}
+
+export async function hashSecret(secret: string, pepper: string): Promise<string> {
+	return sha256Hex(`${pepper}:${secret}`);
 }
 
 // =============================================================================
@@ -261,6 +297,22 @@ function bytesToBase64(bytes: Uint8Array): string {
 		binary += String.fromCharCode(bytes[i]);
 	}
 	return btoa(binary);
+}
+
+function bytesToBase64Url(bytes: Uint8Array): string {
+	return bytesToBase64(bytes)
+		.replace(/\+/g, '-')
+		.replace(/\//g, '_')
+		.replace(/=+$/g, '');
+}
+
+function bytesToHex(bytes: ArrayBuffer | Uint8Array): string {
+	const array = bytes instanceof Uint8Array ? bytes : new Uint8Array(bytes);
+	return [...array].map((byte) => byte.toString(16).padStart(2, '0')).join('');
+}
+
+function toArrayBuffer(bytes: Uint8Array): ArrayBuffer {
+	return bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength) as ArrayBuffer;
 }
 
 /**

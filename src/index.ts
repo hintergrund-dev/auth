@@ -15,7 +15,17 @@
 // Crypto
 // =============================================================================
 
-export { generateRandomSecret, hashPassword, verifyPassword, encrypt, decrypt } from './crypto';
+export {
+	generateRandomSecret,
+	randomToken,
+	hashPassword,
+	verifyPassword,
+	sha256Hex,
+	hmacSha256,
+	hashSecret,
+	encrypt,
+	decrypt
+} from './crypto';
 
 // =============================================================================
 // JWT
